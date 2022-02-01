@@ -1,0 +1,35 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Description: |
+  Kittens Carousel web site
+  
+Resources:
+  kitteninstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-0a8b4cd432b1c3063
+      InstanceType: t2.micro
+      KeyName: firstkey
+      SecurityGroups:
+        - KittenSecGroup
+      Tags:
+        - Key: Name
+          Value: Web Server
+      UserData:
+        Fn::Base64:
+          !Sub |
+          #! /bin/bash
+          sudo yum update
+          sudo yum install httpd -y
+          sudo systemctl start httpd
+          sudo systemctl enable httpd
+          sudo chmod -R 777 var/www/html
+          cd var/www/html
+          wget https://raw.githubusercontent.com/ilhanB/my-projects/blob/main/aws/Project-101-kittens-carousel-static-website-ec2/static-web/index.html
+          wget https://raw.githubusercontent.com/ilhanB/my-projects/blob/main/aws/Project-101-kittens-carousel-static-website-ec2/static-web/cat0.jpg
+          wget https://raw.githubusercontent.com/ilhanB/my-projects/blob/main/aws/Project-101-kittens-carousel-static-website-ec2/static-web/cat1.jpg
+          wget https://raw.githubusercontent.com/ilhanB/my-projects/blob/main/aws/Project-101-kittens-carousel-static-website-ec2/static-web/cat2.jpg
+          wget https://raw.githubusercontent.com/ilhanB/my-projects/blob/main/aws/Project-101-kittens-carousel-static-website-ec2/static-web/cat3.png
+          
+
+      
