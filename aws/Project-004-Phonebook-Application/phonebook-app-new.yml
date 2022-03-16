@@ -1,0 +1,28 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: |
+  
+Parameters:
+  MyVPC:
+    Description: VPC Id of your existing account.
+    Type: AWS::EC2::VPC::Id
+
+  KeyName:
+    Description: Please enter your valid Key pair.
+    Type: AWS::EC2::KeyPair::KeyName
+
+  Subnets:
+    Description: Choose your subnets.
+    Type: List<AWS::EC2::Subnet::Id>
+
+
+Resources:
+  ALBSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable HTTP for ALB 
+      SecurityGroupIngress:
+        - IpProtocol: 
+
+      VpcId: "String"
+  
+Outputs:
