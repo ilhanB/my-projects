@@ -97,6 +97,7 @@ Kittens Carousel is a static website application deployed with Apache Web Server
 
 - Customize the application by hard-coding your name instead of `student_name` within `index.html`.
 
+
 ## Resources
 
 - [AWS Cloudformation User Guide](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html)
